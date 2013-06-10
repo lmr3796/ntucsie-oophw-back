@@ -1,21 +1,13 @@
 require 'grit'
 
-class PathController < ApplicationController
-  before_filter :check_email, :except => [:help]
-  def check_email
-    if not /@csie\.ntu\.edu\.tw/ =~ session[:email]
-      render :json => { :message => 'Invalid account, please login with your NTU CSIE account.', :error => ''}, :status => 403
-      return 
-    end
-  end
+class GitController < ApplicationController
   def git
-    @email = session[:email]
-    @id = @email[0...@email.index('@')]
-
-    @repo = params[:path].strip
+    @hw_id = params[:hw_id]
+    @student_id = params[:student_id]
+    @repo = params[:url].strip
 
     # create directory & get the newest version
-    dest = homework_dest_for(params[:hw_id], @id)
+    dest = homework_dest_for(@hw_id, @student_id)
     begin
       version = 0
       if File.directory?(dest)
@@ -52,8 +44,5 @@ class PathController < ApplicationController
     end
     head = repo.commits.first
     render :json => { :message => 'Git clone succeeded.', :version => version.ordinalize, :repo => @repo, :info => head }
-  end
-
-  def help
   end
 end
