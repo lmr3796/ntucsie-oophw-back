@@ -1,18 +1,6 @@
 NtucsieOopHw::Application.routes.draw do
-  get "test" => 'test#test'
-
-  get 'welcome/index'
-  
   get 'path/git'
-  get 'path/help'
-
-  get 'admin/index'
-  get 'history/:hw_id' => 'history#get'
-
-  #OAuth
-  get   '/login', :to => 'sessions#new', :as => :login
-  match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'sessions#failure'
+  get 'history/:hw_id/:student_id' => 'history#get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -20,9 +8,6 @@ NtucsieOopHw::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
-  match 'admin/' => 'admin#index'
-  match 'help' => 'path#help'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
