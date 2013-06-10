@@ -21,7 +21,7 @@ class HistoryController < ApplicationController
         :repo     => origin_for(@repo),
         :info     => @repo.commits.first,
         :time     => File::Stat.new(repo_dir).ctime
-      }) rescue nil
+      }) 
     end
     @submissions.sort! { |x,y| y[:version] <=> x[:version] }
 
