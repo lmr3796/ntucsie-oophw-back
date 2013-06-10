@@ -1,4 +1,5 @@
 NtucsieOopHw::Application.routes.draw do
+  get "build/:hw_id/:student_id/:version/:command" => 'build#build'
   get 'submit/:hw_id/:student_id' => 'git#git'
   get 'history/:hw_id/:student_id' => 'history#get'
 
