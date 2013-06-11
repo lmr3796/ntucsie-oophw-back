@@ -43,6 +43,6 @@ class GitController < ApplicationController
       return
     end
     head = repo.commits.first
-    render :json => { :message => 'Git clone succeeded.', :version => version.ordinalize, :repo => @repo, :info => head }
+    render :json => { :message => 'Git clone succeeded.', :version => version, :repo => @repo, :info => head }
   end
 end
