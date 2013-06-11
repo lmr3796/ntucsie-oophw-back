@@ -1,6 +1,6 @@
 NtucsieOopHw::Application.routes.draw do
   get "build/:hw_id/:student_id/:version" => 'build#build'
-  get 'submit/:hw_id/:student_id' => 'git#git'
+  get 'submit/:hw_id/:student_id' => 'submit#git'
   get 'history/:hw_id/:student_id' => 'history#get'
 
   # The priority is based upon order of creation:

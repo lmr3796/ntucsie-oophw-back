@@ -1,6 +1,6 @@
 require 'grit'
 
-class GitController < ApplicationController
+class SubmitController < ApplicationController
   def git
     @hw_id = params[:hw_id]
     @student_id = params[:student_id]
