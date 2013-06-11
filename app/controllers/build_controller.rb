@@ -1,7 +1,7 @@
 require 'open3'
 class BuildController < ApplicationController
   def build 
-    command = params[:command]
+    command = 'make'
     student_id = params[:student_id]
     hw_id = params[:hw_id]
     version = params[:version]
@@ -14,6 +14,6 @@ class BuildController < ApplicationController
       build_status[:status] = 1
       build_status[:message] = stderr.strip
     end
-    render :json => build_status
+    render :json => build_status, :status => build_status[:status] == 0 ? 200 : 400
   end
 end
