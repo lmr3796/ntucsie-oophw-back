@@ -64,10 +64,9 @@ class HistoryController < ApplicationController
         next
       end
 
-      submissions.sort! { |x,y| y[:version] <=> x[:version] }
       @students.push({
         :id           => id,
-        :submissions  => submissions
+        :submissions  => submissions.sort{|x,y| y[:version] <=> x[:version]}.group_by {|x|x[:repo]}.values.map{|x|x.first}
       })
 
       @students.sort! { |x,y| x[:id] <=> y[:id] }
