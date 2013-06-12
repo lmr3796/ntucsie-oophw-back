@@ -33,7 +33,7 @@ class HistoryController < ApplicationController
   def full_hw
     @students = []
     @hw_id = params[:hw_id]
-    @hw_deadline  = Time.new(2013, 4, 11, 12, 00)
+    @hw_deadline  = DEADLINE[@hw_id]
 
     root = homework_dest_for(@hw_id)
     Dir.foreach(root) do |id|
@@ -71,7 +71,7 @@ class HistoryController < ApplicationController
 
       @students.sort! { |x,y| x[:id] <=> y[:id] }
     end
-    render :json => {:status => 0, :hw_id => @hw_id, :deadline => @hw_id, :students => @students}
+    render :json => {:status => 0, :hw_id => @hw_id, :deadline => @hw_deadline, :students => @students}
   end
 
 end
