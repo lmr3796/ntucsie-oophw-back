@@ -14,7 +14,7 @@ class StatusController < ApplicationController
           :error => result.error,
           :version => result.version,
           :repo => result.url,
-          :info => result.info,
+          :info => (result.info != "null")? JSON.parse(result.info) : nil,
       }
       render :json => send_back, :status => result.status
     end

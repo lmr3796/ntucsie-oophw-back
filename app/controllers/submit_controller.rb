@@ -61,6 +61,6 @@ class SubmitController < ApplicationController
       return
     end
     head = repo.commits.first
-    job_done(:message => 'Git clone succeeded.', :version => version, :repo => @url, :info => head.to_hash, :status => 200) 
+    job_done(:message => 'Git clone succeeded.', :version => version, :repo => @url, :info => head.to_json, :status => 200) 
   end
 end
