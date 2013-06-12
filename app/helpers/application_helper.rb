@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def origin_for(repo)
-    `cd #{repo.working_dir} && git config --get remote.origin.url`
+    `cd #{repo.working_dir} && git config --get remote.origin.url`.strip
   end
 end
