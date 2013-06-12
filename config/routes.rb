@@ -1,7 +1,8 @@
 NtucsieOopHw::Application.routes.draw do
   get "build/:hw_id/:student_id/:version" => 'build#build'
   get 'submit/:hw_id/:student_id' => 'submit#git'
-  get 'history/:hw_id/:student_id' => 'history#get'
+  get 'history/:hw_id/:student_id' => 'history#individual'
+  get 'history/:hw_id' => 'history#full_hw'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
