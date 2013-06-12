@@ -1,4 +1,7 @@
 NtucsieOopHw::Application.routes.draw do
+  get "status/build" => 'status#build'
+  get 'status/clone/:student_id/:job_id' => 'status#clone'
+
   get "build/:hw_id/:student_id/:version" => 'build#build'
   get 'submit/:hw_id/:student_id' => 'submit#git'
   get 'history/:hw_id/:student_id' => 'history#individual'
