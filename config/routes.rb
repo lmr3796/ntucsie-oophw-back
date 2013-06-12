@@ -1,5 +1,5 @@
 NtucsieOopHw::Application.routes.draw do
-  get "status/build" => 'status#build'
+  get "status/build/:student_id/:job_id" => 'status#build'
   get 'status/clone/:student_id/:job_id' => 'status#clone'
 
   get "build/:hw_id/:student_id/:version" => 'build#build'
