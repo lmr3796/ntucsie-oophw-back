@@ -1,6 +1,14 @@
 class Clone < ActiveRecord::Base
   attr_accessible :decimal, :decimal, :error, :hw, :message, :student, :url
 
+  def homework_dest_for(number, id=nil)
+    if id == nil
+      "/tmp2/oop#{number}"
+    end
+
+    "/tmp2/oop#{number}/#{id}"
+  end
+
   def job_done(fields)
     @job.hw = fields[:hw]
     @job.url = fields[:url]
