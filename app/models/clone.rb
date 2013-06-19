@@ -60,7 +60,7 @@ class Clone < ActiveRecord::Base
       return
     end
     head = repo.commits.first
-    job_done(:message => 'Git clone succeeded.', :version => version, :repo => url, :info => head.to_json, :status => 200) 
+    job_done(:message => 'Git clone succeeded.', :version => version, :url => url, :info => head.to_json, :status => 200) 
   end
 
 end
